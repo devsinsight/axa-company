@@ -1,0 +1,43 @@
+{
+  "name": "axa-company",
+  "version": "1.0.0",
+  "description": "AXA Company Clients and Policies",
+  "main": "index.ts",
+  "scripts": {
+    "grunt": "grunt",
+    "start": "npm run build:dev && npm run watch",
+    "start-nodemon": "nodemon ./dist/index.js | pino-pretty",
+    "watch": "concurrently --kill-others \"nodemon ./dist | pino-pretty\" \"grunt watch\"",
+    "build:dev": "SET NODE_ENV=development && npm run grunt",
+    "build:prod": "SET NODE_ENV=production && npm run grunt"
+  },
+  "keywords": [
+    "[\"restify\"",
+    "\"template\"",
+    "\"node\"",
+    "\"javascript\"]"
+  ],
+  "author": "José Luis Olivares Rojas",
+  "license": "ISC",
+  "dependencies": {
+    "@types/restify": "^8.4.2",
+    "@types/restify-errors": "^4.3.3",
+    "concurrently": "^5.0.2",
+    "crypto": "^1.0.1",
+    "grunt": "^1.0.4",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-contrib-watch": "^1.1.0",
+    "grunt-ts": "^6.0.0-beta.22",
+    "inversify": "^5.0.1",
+    "inversify-restify-utils": "^3.4.0",
+    "nodemon": "^2.0.2",
+    "pino-pretty": "^3.5.0",
+    "reflect-metadata": "^0.1.13",
+    "restify": "^8.5.1",
+    "restify-cors-middleware": "^1.1.1",
+    "restify-errors": "^8.0.2",
+    "restify-oauth2": "^4.0.4",
+    "typescript": "^3.7.5",
+    "underscore": "^1.9.2"
+  }
+}
