@@ -71,7 +71,6 @@ export const authenticateToken = (token, req, next) => {
 };
 
 export const authorize = (req, res, next, roles: string[]) => {
-  console.log(roles);
   if (roles.indexOf(req.params.user.role) > -1) return next();
   else return res.send(new errors.UnauthorizedError("User not authorized"));
 };

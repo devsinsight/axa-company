@@ -22,6 +22,8 @@
   "dependencies": {
     "@types/inversify": "^2.0.33",
     "@types/inversify-restify-utils": "^2.0.0",
+    "@types/request": "^2.48.4",
+    "@types/request-promise": "^4.1.45",
     "@types/restify": "^8.4.2",
     "@types/restify-errors": "^4.3.3",
     "concurrently": "^5.0.2",
@@ -35,6 +37,8 @@
     "nodemon": "^2.0.2",
     "pino-pretty": "^3.5.0",
     "reflect-metadata": "^0.1.13",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.5",
     "restify": "^8.5.1",
     "restify-cors-middleware": "^1.1.1",
     "restify-errors": "^8.0.2",
