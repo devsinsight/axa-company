@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import * as crypto from "crypto";
+import * as errors from "restify-errors";
 
 var database = {
   clients: {
@@ -7,8 +8,8 @@ var database = {
     unofficialClient: { secret: "DECAF" }
   },
   users: {
-    AzureDiamond: { password: "hunter2" },
-    Cthon98: { password: "*********" }
+    AzureDiamond: { password: "hunter2", role: "admin" },
+    Cthon98: { password: "*********", role: "client" }
   },
   tokensToUsernames: {}
 };
@@ -42,7 +43,10 @@ export const grantUserToken = (credentials, req, cb) => {
     var token = generateToken(
       credentials.username + ":" + credentials.password
     );
-    database.tokensToUsernames[token] = credentials.username;
+    database.tokensToUsernames[token] = {
+      username: credentials.username,
+      role: database.users[credentials.username].role
+    };
 
     // Call back with the token so Restify-OAuth2 can pass it on to the client.
     return cb(null, token);
@@ -54,16 +58,20 @@ export const grantUserToken = (credentials, req, cb) => {
 };
 
 export const authenticateToken = (token, req, next) => {
-  console.log(token);
-
   if (_.has(database.tokensToUsernames, token)) {
     // If the token authenticates, set the corresponding property on the request, and call back with `true`.
     // The routes can now use these properties to check if the request is authorized and authenticated.
-    req.username = database.tokensToUsernames[token];
+    req.params.user = database.tokensToUsernames[token];
     return next(null, true);
   }
 
   // If the token does not authenticate, call back with `false` to signal that.
   // Calling back with an error would be reserved for internal server error situations.
   return next(null, false);
+};
+
+export const authorize = (req, res, next, roles: string[]) => {
+  console.log(roles);
+  if (roles.indexOf(req.params.user.role) > -1) return next();
+  else return res.send(new errors.UnauthorizedError("User not authorized"));
 };
