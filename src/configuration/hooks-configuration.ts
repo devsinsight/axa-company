@@ -1,5 +1,6 @@
 import * as _ from "underscore";
 import * as crypto from "crypto";
+import * as errors from "restify-errors";
 
 var database = {
   clients: {
@@ -53,15 +54,15 @@ export const grantUserToken = (credentials, req, cb) => {
   cb(null, false);
 };
 
-export const authenticateToken = (token, req, cb) => {
-  if (_.has(database.tokensToUsernames, token)) {
+export const authenticateToken = (req, res, next) => {
+  if (_.has(database.tokensToUsernames, req.headers.token)) {
     // If the token authenticates, set the corresponding property on the request, and call back with `true`.
     // The routes can now use these properties to check if the request is authorized and authenticated.
-    req.username = database.tokensToUsernames[token];
-    return cb(null, true);
+    req.username = database.tokensToUsernames[req.headers.token];
+    return next();
   }
 
   // If the token does not authenticate, call back with `false` to signal that.
   // Calling back with an error would be reserved for internal server error situations.
-  cb(null, false);
+  return res.send(new errors.UnauthorizedError());
 };

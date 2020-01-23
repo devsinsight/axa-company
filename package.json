@@ -20,6 +20,8 @@
   "author": "José Luis Olivares Rojas",
   "license": "ISC",
   "dependencies": {
+    "@types/inversify": "^2.0.33",
+    "@types/inversify-restify-utils": "^2.0.0",
     "@types/restify": "^8.4.2",
     "@types/restify-errors": "^4.3.3",
     "concurrently": "^5.0.2",

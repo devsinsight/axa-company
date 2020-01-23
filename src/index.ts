@@ -6,6 +6,6 @@ let configParams = {
   name: settings.name
 };
 
-export let api = InversifyContainer(configParams, RestifyApiConfig);
+export let server = InversifyContainer(configParams, RestifyApiConfig);
 
-api.listen(settings.port);
+server.listen(settings.port);

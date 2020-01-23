@@ -22,7 +22,7 @@ export function RestifyApiConfig(server: restify.Server) {
   server.pre(restify.pre.sanitizePath());
   server.use(cors.actual);
   server.use(restify.plugins.acceptParser(server.acceptable));
-  server.use(restify.plugins.bodyParser());
+  server.use(restify.plugins.bodyParser({ mapParams: false }));
   server.use(restify.plugins.queryParser());
   server.use(restify.plugins.authorizationParser());
   server.use(restify.plugins.fullResponse());
