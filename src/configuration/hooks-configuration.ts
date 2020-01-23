@@ -1,6 +1,5 @@
 import * as _ from "underscore";
 import * as crypto from "crypto";
-import * as errors from "restify-errors";
 
 var database = {
   clients: {
@@ -14,7 +13,7 @@ var database = {
   tokensToUsernames: {}
 };
 
-const generateToken = data => {
+const generateToken = (data: any) => {
   var random = Math.floor(Math.random() * 100001);
   var timestamp = new Date().getTime();
   var sha256 = crypto.createHmac("sha256", random + "WOO" + timestamp);
@@ -54,15 +53,17 @@ export const grantUserToken = (credentials, req, cb) => {
   cb(null, false);
 };
 
-export const authenticateToken = (req, res, next) => {
-  if (_.has(database.tokensToUsernames, req.headers.token)) {
+export const authenticateToken = (token, req, next) => {
+  console.log(token);
+
+  if (_.has(database.tokensToUsernames, token)) {
     // If the token authenticates, set the corresponding property on the request, and call back with `true`.
     // The routes can now use these properties to check if the request is authorized and authenticated.
-    req.username = database.tokensToUsernames[req.headers.token];
-    return next();
+    req.username = database.tokensToUsernames[token];
+    return next(null, true);
   }
 
   // If the token does not authenticate, call back with `false` to signal that.
   // Calling back with an error would be reserved for internal server error situations.
-  return res.send(new errors.UnauthorizedError());
+  return next(null, false);
 };

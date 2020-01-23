@@ -2,6 +2,7 @@ import * as restify from "restify";
 import * as corsMiddleware from "restify-cors-middleware";
 import * as restifyOAuth2 from "restify-oauth2";
 import * as hooks from "./hooks-configuration";
+import * as errors from "restify-errors";
 
 const cors = corsMiddleware({
   preflightMaxAge: 5,
