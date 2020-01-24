@@ -1,15 +1,14 @@
 import * as _ from "underscore";
 import * as crypto from "crypto";
 import * as errors from "restify-errors";
+import { ClientRepository } from "../repository/client.repository";
+
+const repo = new ClientRepository();
+const password = "Pass@w0rd1";
 
 var database = {
   clients: {
-    officialApiClient: { secret: "C0FFEE" },
-    unofficialClient: { secret: "DECAF" }
-  },
-  users: {
-    AzureDiamond: { password: "hunter2", role: "admin" },
-    Cthon98: { password: "*********", role: "client" }
+    axaClient: { secret: "secret" }
   },
   tokensToUsernames: {}
 };
@@ -25,18 +24,16 @@ const generateToken = (data: any) => {
 export const validateClient = (credentials, req, cb) => {
   // Call back with `true` to signal that the client is valid, and `false` otherwise.
   // Call back with an error if you encounter an internal server error situation while trying to validate.
-
   var isValid =
     _.has(database.clients, credentials.clientId) &&
     database.clients[credentials.clientId].secret === credentials.clientSecret;
   cb(null, isValid);
 };
 
-export const grantUserToken = (credentials, req, cb) => {
-  var isValid =
-    _.has(database.users, credentials.username) &&
-    database.users[credentials.username].password === credentials.password;
-  if (isValid) {
+export const grantUserToken = async (credentials, req, cb) => {
+  let user = await repo.getByUsername(credentials.username).then(data => data);
+
+  if (!!user && credentials.password === password) {
     // If the user authenticates, generate a token for them and store it so `exports.authenticateToken` below
     // can look it up later.
 
@@ -45,7 +42,7 @@ export const grantUserToken = (credentials, req, cb) => {
     );
     database.tokensToUsernames[token] = {
       username: credentials.username,
-      role: database.users[credentials.username].role
+      role: user.role
     };
 
     // Call back with the token so Restify-OAuth2 can pass it on to the client.

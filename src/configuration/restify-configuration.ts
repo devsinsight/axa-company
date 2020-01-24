@@ -11,13 +11,6 @@ const cors = corsMiddleware({
   exposeHeaders: ["API-Token-Expiry"]
 });
 
-const RESOURCES = Object.freeze({
-  INITIAL: "/",
-  TOKEN: "/token",
-  PUBLIC: "/public",
-  SECRET: "/secret"
-});
-
 export function RestifyApiConfig(server: restify.Server) {
   server.pre(cors.preflight);
   server.pre(restify.pre.sanitizePath());
@@ -28,5 +21,5 @@ export function RestifyApiConfig(server: restify.Server) {
   server.use(restify.plugins.authorizationParser());
   server.use(restify.plugins.fullResponse());
 
-  restifyOAuth2.ropc(server, { tokenEndpoint: RESOURCES.TOKEN, hooks });
+  restifyOAuth2.ropc(server, { tokenEndpoint: "/token", hooks });
 }
