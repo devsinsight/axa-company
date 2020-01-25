@@ -26,6 +26,14 @@ The API service is using oauth2 - resource owner flow which requires user/passwo
 
     You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and one client. If not, you will receive an Authorization error (401 - No Authorized). Also, take into account the role.
 
+    Then, type the password: Pass@w0rd1
+
+    Finally, you need to enter the client_id and secret:
+    client_id: axaClient
+    secret: secret
+
+# Libraries used in this example:
+
 - [Restify API Guide][rst1]
 - [Inversify Restify Utils][rst2]
 - [Pino Pretty][rst3]
