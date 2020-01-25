@@ -1,13 +1,13 @@
 # AXA - Company
 
-Here is the api service with clients and policies endpoinds. You should be able to acces using some of the usernames (emails) and password. For this example the password to every client is: Pass@w0rd1
+Here is the api service with clients and policies. You should be able to acces using some of the usernames (emails) and password. For this example the password to every client is: Pass@w0rd1
 
 The API service is using oauth2 - resource owner flow which requires user/password credentians and client/secret credentials.
 
 # Authentication && Authorization
 
-Click on the "Authorize" button on the top right of the screen.
-In the username input type some of the client's emails, for example:
+1. Click on the "Authorize" button on the top right of the screen.
+   In the username input type some of the client's emails, for example:
 
 ```javascript
         {
@@ -24,13 +24,13 @@ In the username input type some of the client's emails, for example:
         }
 ```
 
-You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and one client. If not, you will receive an Authorization error (401 - No Authorized). Also, take into account the role.
+2. You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and client role. If not, you will receive an Authorization error (401 - No Authorized).
 
-Then, type the password: Pass@w0rd1
+3. Then, type the password: Pass@w0rd1
 
-Finally, you need to enter the client_id and secret:
-client_id: axaClient
-secret: secret
+4. Finally, you need to enter the client_id and secret:
+   client_id: axaClient
+   secret: secret
 
 # Libraries used in this example:
 
