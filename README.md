@@ -4,10 +4,10 @@ Here is the api service with clients and policies endpoinds. You should be able 
 
 The API service is using oauth2 - resource owner flow which requires user/password credentians and client/secret credentials.
 
-## Authentication && Authorization
+# Authentication && Authorization
 
-    Click on the "Authorize" button on the top right of the screen.
-    In the username input type some of the client's emails, for example:
+Click on the "Authorize" button on the top right of the screen.
+In the username input type some of the client's emails, for example:
 
 ```javascript
         {
@@ -24,13 +24,13 @@ The API service is using oauth2 - resource owner flow which requires user/passwo
         }
 ```
 
-    You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and one client. If not, you will receive an Authorization error (401 - No Authorized). Also, take into account the role.
+You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and one client. If not, you will receive an Authorization error (401 - No Authorized). Also, take into account the role.
 
-    Then, type the password: Pass@w0rd1
+Then, type the password: Pass@w0rd1
 
-    Finally, you need to enter the client_id and secret:
-    client_id: axaClient
-    secret: secret
+Finally, you need to enter the client_id and secret:
+client_id: axaClient
+secret: secret
 
 # Libraries used in this example:
 
