@@ -34,6 +34,14 @@ module.exports = function(grunt) {
         },
         tasks: ["ts"]
       }
+    },
+    copy: {
+      main: {
+        expand: true,
+        flatten: true,
+        src: ["./src/**/*.yaml"],
+        dest: "./dist/configuration/"
+      }
     }
   });
 

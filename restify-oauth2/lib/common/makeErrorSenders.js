@@ -70,8 +70,7 @@ module.exports = function makeErrorSenders(grantTypes) {
 
     tokenRequired: function(res, next, options, message) {
       if (message === undefined) {
-        message =
-          "Bearer token required. Follow the oauth2-token link to get one!";
+        message = "Bearer token required.";
       }
 
       sendWithHeaders(res, next, options, new errors.BadRequestError(message));
@@ -79,8 +78,7 @@ module.exports = function makeErrorSenders(grantTypes) {
 
     authenticationRequired: function(res, next, options, message) {
       if (message === undefined) {
-        message =
-          "Authentication via bearer token required. Follow the oauth2-token link to get one!";
+        message = "Authentication via bearer token required.";
       }
 
       sendAuthenticationRequired(
@@ -93,9 +91,7 @@ module.exports = function makeErrorSenders(grantTypes) {
 
     insufficientAuthorization: function(res, next, options, message) {
       if (message === undefined) {
-        message =
-          "Insufficient authorization. Follow the oauth2-token link to get a token with more " +
-          "authorization!";
+        message = "Insufficient authorization.";
       }
 
       sendInsufficientAuthorization(
@@ -108,8 +104,7 @@ module.exports = function makeErrorSenders(grantTypes) {
 
     tokenInvalid: function(res, next, options, message) {
       if (message === undefined) {
-        message =
-          "Bearer token invalid. Follow the oauth2-token link to get a valid one!";
+        message = "Bearer token invalid.";
       }
 
       sendWithHeaders(

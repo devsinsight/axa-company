@@ -32,7 +32,7 @@ export class ClientController implements interfaces.Controller {
       .catch(err => err);
   }
 
-  @Get("/policies-by-id", (req, res, next) => {
+  @Get("/policies-by-client-id", (req, res, next) => {
     authorize(req, res, next, ["admin", "client"]);
   })
   private async getPoliciesByClientId(req: Request): Promise<any> {
@@ -42,7 +42,7 @@ export class ClientController implements interfaces.Controller {
       .catch(err => err);
   }
 
-  @Get("/policies-by-username", (req, res, next) => {
+  @Get("/policies-by-client-username", (req, res, next) => {
     authorize(req, res, next, ["admin", "client"]);
   })
   private async getPoliciesByUsername(req: Request): Promise<any> {
