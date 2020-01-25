@@ -9,7 +9,7 @@ The API service is using oauth2 - resource owner flow which requires user/passwo
     Click on the "Authorize" button on the top right of the screen.
     In the username input type some of the client's emails, for example:
 
-```
+        ```
         {
          "id":"a0ece5db-cd14-4f21-812f-966633e7be86",
          "name":"Britney",
@@ -22,7 +22,7 @@ The API service is using oauth2 - resource owner flow which requires user/passwo
          "email":"barnettblankenship@quotezart.com",
          "role":"user"
         }
-```
+        ```
 
     You can use the client credentials above to access to the api docs (swagger-docs), notice that there are one admin and one client. If not, you will receive an Authorization error (401 - No Authorized). Also, take into account the role.
 
