@@ -28,9 +28,9 @@ The API service is using oauth2 - resource owner flow which requires user/passwo
 
 3. Then, type the password: Pass@w0rd1
 
-4. Finally, you need to enter the client_id and secret:
+4. Finally, you need to enter the client_id and client_secret:
    client_id: axaClient
-   secret: secret
+   client_secret: secret
 
 # Libraries used in this example:
 
