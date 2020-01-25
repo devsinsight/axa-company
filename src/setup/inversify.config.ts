@@ -22,6 +22,5 @@ export function InversifyContainer(opts?: any, config?: Function) {
   container.bind<PolicyRepository>("PolicyRepository").to(PolicyRepository);
 
   let server = new InversifyRestifyServer(container, opts);
-
   return server.setConfig(api => config(api)).build();
 }

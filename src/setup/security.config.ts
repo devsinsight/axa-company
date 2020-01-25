@@ -55,9 +55,6 @@ export const grantUserToken = async (credentials, req, cb) => {
 };
 
 export const authenticateToken = (token, req, next) => {
-  //if (typeof token !== "string")
-  //  return req.send(new errors.UnauthorizedError("Bearer token invalid."));
-
   if (_.has(database.tokensToUsernames, token)) {
     // If the token authenticates, set the corresponding property on the request, and call back with `true`.
     // The routes can now use these properties to check if the request is authorized and authenticated.
@@ -71,7 +68,6 @@ export const authenticateToken = (token, req, next) => {
 };
 
 export const authorize = (req, res, next, roles: string[]) => {
-  console.log("auth here");
   if (req.params.user && roles.indexOf(req.params.user.role) > -1)
     return next();
   else return res.send(new errors.UnauthorizedError("Not Authorized."));

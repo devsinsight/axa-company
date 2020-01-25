@@ -1,6 +1,7 @@
-import { InversifyContainer } from "./configuration/inversify-configuration";
-import { settings } from "./configuration/evnironment";
-import { RestifyApiConfig } from "./configuration/restify-configuration";
+import { InversifyContainer } from "./setup/inversify.config";
+import { settings } from "./setup/evnironment";
+import { RestifyApiConfig } from "./setup/restify.config";
+import * as open from "open";
 
 let configParams = {
   name: settings.name

@@ -1,7 +1,7 @@
 import * as rp from "request-promise";
 import { injectable } from "inversify";
 import { PolicyModel } from "../models/policy.model";
-import { settings } from "../configuration/evnironment";
+import { settings } from "../setup/evnironment";
 
 @injectable()
 export class PolicyRepository {

@@ -5,7 +5,7 @@ import { ClientService } from "../services/client.service";
 import {
   authenticateToken as authenticate,
   authorize
-} from "../configuration/hooks-configuration";
+} from "../setup/security.config";
 
 @Controller("/client")
 @injectable()
@@ -33,7 +33,7 @@ export class ClientController implements interfaces.Controller {
   }
 
   @Get("/policies-by-client-id", (req, res, next) => {
-    authorize(req, res, next, ["admin", "client"]);
+    authorize(req, res, next, ["admin"]);
   })
   private async getPoliciesByClientId(req: Request): Promise<any> {
     return await this.clientService
@@ -43,7 +43,7 @@ export class ClientController implements interfaces.Controller {
   }
 
   @Get("/policies-by-client-username", (req, res, next) => {
-    authorize(req, res, next, ["admin", "client"]);
+    authorize(req, res, next, ["admin"]);
   })
   private async getPoliciesByUsername(req: Request): Promise<any> {
     return await this.clientService

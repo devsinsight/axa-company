@@ -1,7 +1,7 @@
 import * as rp from "request-promise";
 import { injectable } from "inversify";
 import { ClientModel } from "../models/client.model";
-import { settings } from "../configuration/evnironment";
+import { settings } from "../setup/evnironment";
 
 @injectable()
 export class ClientRepository {
