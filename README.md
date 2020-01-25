@@ -44,7 +44,7 @@ secret: secret
 [rst2]: https://github.com/inversify/inversify-restify-utils
 [rst3]: https://github.com/pinojs/pino-pretty
 [rst4]: https://github.com/gruntjs/grunt-contrib-watch
-[rst4]: https://swagger.io/docs/specification/2-0/what-is-swagger/
+[rst5]: https://swagger.io/docs/specification/2-0/what-is-swagger/
 
 # Installation
 
