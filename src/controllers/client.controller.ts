@@ -15,7 +15,7 @@ export class ClientController implements interfaces.Controller {
   @Get("/info-by-id", (req, res, next) => {
     authorize(req, res, next, ["admin", "client"]);
   })
-  private async getClientInfoById(req: Request): Promise<any> {
+  public async getClientInfoById(req: Request): Promise<any> {
     return await this.clientService
       .getClientById(req.query.id)
       .then(data => data || "Client was not found.")
@@ -25,7 +25,7 @@ export class ClientController implements interfaces.Controller {
   @Get("/info-by-username", (req, res, next) => {
     authorize(req, res, next, ["admin", "client"]);
   })
-  private async getClientInfoByUsername(req: Request): Promise<any> {
+  public async getClientInfoByUsername(req: Request): Promise<any> {
     return await this.clientService
       .getClientByUsernname(req.query.username)
       .then(data => data || "Client was not found.")
@@ -35,7 +35,7 @@ export class ClientController implements interfaces.Controller {
   @Get("/policies-by-client-id", (req, res, next) => {
     authorize(req, res, next, ["admin"]);
   })
-  private async getPoliciesByClientId(req: Request): Promise<any> {
+  public async getPoliciesByClientId(req: Request): Promise<any> {
     return await this.clientService
       .getPoliciesByClientId(req.query.id)
       .then(data => data || "Policies was not found.")
@@ -45,7 +45,7 @@ export class ClientController implements interfaces.Controller {
   @Get("/policies-by-client-username", (req, res, next) => {
     authorize(req, res, next, ["admin"]);
   })
-  private async getPoliciesByUsername(req: Request): Promise<any> {
+  public async getPoliciesByUsername(req: Request): Promise<any> {
     return await this.clientService
       .getPoliciesByUsername(req.query.username)
       .then(data => data || "Policies was not found.")

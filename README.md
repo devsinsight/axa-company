@@ -69,20 +69,17 @@ to start the app and watch:
 $ npm start
 ```
 
-# Build
+# test
 
-Development environment:
+Testing using mocha:
 
 ```sh
-$ npm run build:dev
+$ npm test
 ```
 
-Production environment:
-
-```sh
-$ npm run build:prod
 ```
 
 # Result
 
 http://localhost:3000/docs/swagger
+```

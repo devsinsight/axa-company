@@ -1,29 +1,44 @@
-const rootFolder = "src";
-
 module.exports = function(grunt) {
   "use strict";
 
   grunt.initConfig({
     ts: {
-      app: {
+      src: {
         files: [
           {
-            src: [rootFolder + "/**/*.ts"],
-            dest: "./dist"
+            src: ["src/**/*.ts"],
+            dest: "dist/"
           }
         ],
         options: {
           module: "commonjs",
           target: "es2017",
-          sourceMap: false,
+          sourceMap: true,
           emitDecoratorMetadata: true,
-          experimentalDecorators: true
+          experimentalDecorators: true,
+          fast: "never"
+        }
+      },
+      test: {
+        files: [
+          {
+            src: ["test/**/*.ts"],
+            dest: "dist_test/"
+          }
+        ],
+        options: {
+          module: "commonjs",
+          target: "es2017",
+          sourceMap: true,
+          emitDecoratorMetadata: true,
+          experimentalDecorators: true,
+          fast: "never"
         }
       }
     },
     watch: {
       ts: {
-        files: [rootFolder + "/**/*.ts", rootFolder + "/**/*.yaml"],
+        files: ["src/**/*.ts", "src/**/*.yaml"],
         options: {
           module: "commonjs",
           target: "es2017",
@@ -57,17 +72,28 @@ module.exports = function(grunt) {
         expand: true,
         flatten: true,
         src: ["./src/**/*.yaml"],
-        dest: "./dist/config/"
+        dest: "./dist/setup/"
       }
+    },
+    clean: {
+      dist: ["dist"],
+      dist_test: ["dist_test"]
     }
   });
 
   grunt.loadNpmTasks("grunt-contrib-copy");
   grunt.loadNpmTasks("grunt-contrib-watch");
+  grunt.loadNpmTasks("grunt-contrib-clean");
   grunt.loadNpmTasks("grunt-shell");
-  grunt.loadNpmTasks("grunt-newer");
   grunt.loadNpmTasks("grunt-open");
   grunt.loadNpmTasks("grunt-ts");
 
-  grunt.registerTask("default", ["ts", "copy", "open", "shell:connect"]);
+  grunt.registerTask("default", [
+    "clean:dist",
+    "ts:src",
+    "copy",
+    "open",
+    "shell:connect"
+  ]);
+  grunt.registerTask("test", ["clean:dist_test", "ts:test"]);
 };
