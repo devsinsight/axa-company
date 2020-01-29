@@ -63,7 +63,7 @@ module.exports = function(grunt) {
       all: {
         path: "http://localhost:3000/docs/swagger",
         options: {
-          delay: 4000
+          delay: 6000
         }
       }
     },
