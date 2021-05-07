@@ -58,7 +58,7 @@
     "restify-swagger-jsdoc": "^3.2.3",
     "sinon": "^8.1.1",
     "typescript": "^3.7.5",
-    "underscore": "^1.9.2",
+    "underscore": "^1.12.1",
     "yargs": "^15.1.0"
   }
 }
